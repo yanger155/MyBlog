@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\programs\yanger\MyBlog\public/../application/index\view\summary\index.html";i:1546950583;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -112,25 +113,25 @@
 						<div class="grid-css grid-css--masonry" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
 							<div class="grid__inner">
 								<div class="grid-sizer"></div>
-								{volist name="data" id="vo"} 
+								<?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?> 
 								<div class="grid-item">
 									<div class="grid-item__inner">
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="detail/{$vo.id}">
+											<div class="work"><a href="detail/<?php echo $vo['id']; ?>">
 													
 													<!-- hoverbox ef-slide-bottom -->
 													<div class="hoverbox ef-slide-bottom light">
 														
 														<!-- hb_front -->
-														<div class="hb_front" style="height:239px"><img src="{$vo.image}" alt=""/>
+														<div class="hb_front" style="height:239px"><img src="<?php echo $vo['image']; ?>" alt=""/>
 														</div><!-- End / hb_front -->
 														
 														
 														<!-- hb_back -->
 														<div class="hb_back">
-															<h2 class="work__title">{$vo.title}</h2><span class="work__text">View detail</span>
+															<h2 class="work__title"><?php echo $vo['title']; ?></h2><span class="work__text">View detail</span>
 														</div><!-- End / hb_back -->
 														
 													</div><!-- End / hoverbox ef-slide-bottom -->
@@ -140,14 +141,14 @@
 										</div>
 									</div>
 								</div>
-								{/volist}
+								<?php endforeach; endif; else: echo "" ;endif; ?>
 							</div>
 						</div>
 						<div class="awe-text-center mt-50">
 							<!-- <a class="md-btn md-btn--outline-primary" href="#">all work
 							</a> -->
 						</div>
-						<div style="text-align: center;">{$page}</div>
+						<div style="text-align: center;"><?php echo $page; ?></div>
 						
 					</div>
 				</section>

@@ -6,7 +6,7 @@ use think\Controller;
 use think\Request;
 use think\Db;
 
-class Materials extends Controller
+class Summary extends Controller
 {
     /**
      * 显示资源列表
@@ -16,12 +16,12 @@ class Materials extends Controller
     public function index()
     {
         // 取出该分类下所有的数据并分页展示
-        $data = Db::table('fa_article')->where('category','总结小栈')->select();
-        echo "<pre>";
-        var_dump($data);
-        die;
-        // $page = $data->render();
-        // $this->assign('page',$page);
+        $data = Db::table('fa_article')->where('category','总结小栈')->paginate(6);
+        // echo "<pre>";
+        // var_dump($data);
+        // die;
+        $page = $data->render();
+        $this->assign('page',$page);
         $this->assign('data',$data);
         return $this->fetch();
     }

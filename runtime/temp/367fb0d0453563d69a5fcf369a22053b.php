@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\programs\yanger\MyBlog\public/../application/index\view\index\detail.html";i:1546938633;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -71,9 +72,9 @@
 						
 						<!-- page-title -->
 						<div class="page-title pb-40">
-							<span class="post-detail__cat">{$data.category}</span>
-							<h2 class="page-title__title">{$data.title}</h2>
-							<div class="post-detail__meta"><span class="date">{$data.createtime}</span><span class="author"><a href="#">by Yanger</a></span></div>
+							<span class="post-detail__cat"><?php echo $data['category']; ?></span>
+							<h2 class="page-title__title"><?php echo $data['title']; ?></h2>
+							<div class="post-detail__meta"><span class="date"><?php echo $data['createtime']; ?></span><span class="author"><a href="#">by Yanger</a></span></div>
 							<div class="page-title__divider"></div>
 						</div><!-- End / page-title -->
 						
@@ -88,11 +89,11 @@
 						
 						<!--  -->
 						<div>
-							<div class="post-detail__media"><img src="{$data.image}" alt=""/></div>
+							<div class="post-detail__media"><img src="<?php echo $data['image']; ?>" alt=""/></div>
 							<div class="post-detail__entry row">
 								<div class="col-md-8">
-									<h5>{$data.introduce}</h5>
-									{$data.content}
+									<h5><?php echo $data['introduce']; ?></h5>
+									<?php echo $data['content']; ?>
 								</div>
 							</div>
 						</div><!-- End /  -->

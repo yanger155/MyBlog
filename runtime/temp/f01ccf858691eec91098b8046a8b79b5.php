@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\programs\yanger\MyBlog\public/../application/index\view\index\index.html";i:1546944706;}*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,16 +16,11 @@
 		<link rel="stylesheet" type="text/css" href="assets/vendors/swiper/swiper.css">
 		<!-- App & fonts-->
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:400,700">
-		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assets/css/main.css">	
-
-		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assets/css/main.css">
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<![endif]-->
-		<style>
-			.pagination{display:inline-block;padding-left:0;margin:20px 0;border-radius:4px}.pagination>li{display:inline}.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #ddd}.pagination>li:first-child>a,.pagination>li:first-child>span{margin-left:0;border-top-left-radius:4px;border-bottom-left-radius:4px}.pagination>li:last-child>a,.pagination>li:last-child>span{border-top-right-radius:4px;border-bottom-right-radius:4px}.pagination>li>a:focus,.pagination>li>a:hover,.pagination>li>span:focus,.pagination>li>span:hover{z-index:2;color:#23527c;background-color:#eee;border-color:#ddd}.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{z-index:3;color:#fff;cursor:default;background-color:#009688;border-color:#009688}.pagination>.disabled>a,.pagination>.disabled>a:focus,.pagination>.disabled>a:hover,.pagination>.disabled>span,.pagination>.disabled>span:focus,.pagination>.disabled>span:hover{color:#777;cursor:not-allowed;background-color:#fff;border-color:#ddd}.pagination-lg>li>a,.pagination-lg>li>span{padding:10px 16px;font-size:18px;line-height:1.3333333}.pagination-lg>li:first-child>a,.pagination-lg>li:first-child>span{border-top-left-radius:6px;border-bottom-left-radius:6px}.pagination-lg>li:last-child>a,.pagination-lg>li:last-child>span{border-top-right-radius:6px;border-bottom-right-radius:6px}.pagination-sm>li>a,.pagination-sm>li>span{padding:5px 10px;font-size:12px;line-height:1.5}.pagination-sm>li:first-child>a,.pagination-sm>li:first-child>span{border-top-left-radius:3px;border-bottom-left-radius:3px}.pagination-sm>li:last-child>a,.pagination-sm>li:last-child>span{border-top-right-radius:3px;border-bottom-right-radius:3px}
-		</style>
+		
 	</head>
 	
 	<body>
@@ -104,7 +100,7 @@
 								
 								<!-- title -->
 								<div class="title">
-									<h2 class="title__title">总结小栈</h2>
+									<h2 class="title__title">我的小栈</h2>
 								</div><!-- End / title -->
 								
 							</div>
@@ -112,25 +108,26 @@
 						<div class="grid-css grid-css--masonry" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
 							<div class="grid__inner">
 								<div class="grid-sizer"></div>
-								{volist name="data" id="vo"} 
+								<?php foreach($data as $vo): ?>
 								<div class="grid-item">
 									<div class="grid-item__inner">
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="detail/{$vo.id}">
+											<div class="work"><a href="detail/<?php echo $vo['id']; ?>">
 													
 													<!-- hoverbox ef-slide-bottom -->
 													<div class="hoverbox ef-slide-bottom light">
 														
 														<!-- hb_front -->
-														<div class="hb_front" style="height:239px"><img src="{$vo.image}" alt=""/>
+														<div class="hb_front" style="height:239px">
+															<img src="<?php echo $vo['image']; ?>" alt=""/>
 														</div><!-- End / hb_front -->
 														
 														
 														<!-- hb_back -->
 														<div class="hb_back">
-															<h2 class="work__title">{$vo.title}</h2><span class="work__text">View detail</span>
+															<h2 class="work__title"><?php echo $vo['title']; ?></h2><span class="work__text">View detail (<?php echo $vo['category']; ?>)</span>
 														</div><!-- End / hb_back -->
 														
 													</div><!-- End / hoverbox ef-slide-bottom -->
@@ -140,15 +137,15 @@
 										</div>
 									</div>
 								</div>
-								{/volist}
+								<?php endforeach; ?>
 							</div>
 						</div>
 						<div class="awe-text-center mt-50">
 							<!-- <a class="md-btn md-btn--outline-primary" href="#">all work
 							</a> -->
 						</div>
-						<div style="text-align: center;">{$page}</div>
 						
+						<!-- <div id="demo" style="text-align: center;"></div> -->
 					</div>
 				</section>
 				<!-- End / Section -->

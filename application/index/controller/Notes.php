@@ -16,12 +16,12 @@ class Notes extends Controller
     public function index()
     {
         // 取出该分类下所有的数据并分页展示
-        $data = Db::table('fa_article')->where('category','笔记小栈')->select();
+        $data = Db::table('fa_article')->where('category','笔记小栈')->paginate(6);
         // echo "<pre>";
         // var_dump($data);
         // die;
-        // $page = $data->render();
-        // $this->assign('page',$page);
+        $page = $data->render();
+        $this->assign('page',$page);
         $this->assign('data',$data);
         return $this->fetch();
     }
